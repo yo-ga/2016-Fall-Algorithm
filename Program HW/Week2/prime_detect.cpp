@@ -1,41 +1,50 @@
-#include <bits/stdc++>
-#include <quene>
+#include <bits/stdc++.h>
+#include<cmath>
 using namespace std;
-global int prime[130];
+#define MAX_PRIME 600
+static int prime[MAX_PRIME];
 void make_prime(){
-	for(int i =2,j=0;j<130;j++){
-		k=2;
-		while(k*k<=i){
-			if(i%k==0)
-				break;
-			k++;
-		}
-		if(k*k>i){
-			prime[j]=i;
-		}
-	}
+	prime[0]=2;
+	for(int i=3,j =1;j<MAX_PRIME;i++){
+        for(int s=0;s<j;s++){
+            if(i%prime[s]!=0){
+                if(s==j-1){
+                    prime[j]=i;
+                    j++;
+                }
+            }
+            else
+                break;
+        }
+    }
 	return;
 }
-void print_prime(int num;int innum[130]){
+void print_prime(int num,int innum[MAX_PRIME]){
 	printf("%d=",num);
 	int n=1,p=0,pt;
 	bool first=true;
-	for(int i=0;i<130;i++){
+	for(int i=0;i<MAX_PRIME;i++){
 		if(innum[i]!=0){
-			printf("%s%d%s%d\n",(first?"":"*"),prime[i],(innum[i]!=1?"^":""),(innum[i]>1?innum[i]) );
+			printf("%s%d%s",(first?"":"*"),(prime[i]),((innum[i]!=1)?"^":""));
+            if(innum[i]>1)
+                printf("%d",innum[i]);
 			first=false;
 		}
 	}
+	printf("\n");
 	return;
 }
+
 int main(){
 	make_prime();
-	int n_prime[130];
-	int tem,n =0,i;
-	while(scanf("%d",&n)){
+	int n_prime[MAX_PRIME];
+	long long tem,n =0,i;
+	while(scanf("%lld",&n)){
 		tem=n;
 		i=0;
-		n_prime={};
+		for(int k=0;k<MAX_PRIME;k++){
+            n_prime[k]=0;
+        }
 		while(tem!=1){
 			if(tem%prime[i]==0){
 				tem/=prime[i];
@@ -46,7 +55,7 @@ int main(){
 			}
 			i++;
 		}
-		print_prime(n_prime);
+		print_prime(n,n_prime);
 	}
 	return 0;
 }

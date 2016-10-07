@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
-#include<cmath>
+#include <cmath>
 using namespace std;
-#define MAX_PRIME 600
+#define MAX_PRIME 100
 static int prime[MAX_PRIME];
 void make_prime(){
 	prime[0]=2;

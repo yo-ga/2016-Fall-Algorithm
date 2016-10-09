@@ -4,12 +4,11 @@ using namespace std;
 void make_prime(bool* prime,int len){
     prime[0]=false;
 	prime[1]=false;
-	for(int i =3;i<=len;i++){
-		for(int j=0;j<i;j++){
+	for(int i =2;i<len-1;i++){
+		for(int j=i+1;j<len;j++){
             if(prime[j]){
-                if(i%j==0){
+                if(j%i==0){
                     prime[i]=false;
-                    break;
                 }
             }
 		}
@@ -75,7 +74,7 @@ int main(){
         for (int x=0;x<s+1;x++){
             prime[x]=true;
         }
-        make_prime(prime,s);
+        make_prime(prime,s+1);
         put_in_bag(prime,s,n);
         printf("\n");
 	}

@@ -5,13 +5,11 @@ void make_prime(bool* prime,int len){
     prime[0]=false;
 	prime[1]=false;
 	for(int i =2;i<len-1;i++){
-		for(int j=i+1;j<len;j++){
-            if(prime[j]){
-                if(j%i==0){
-                    prime[i]=false;
-                }
-            }
-		}
+		int j=2;
+		while(j*i<len){
+            prime[j*i]=false;
+            j++;
+        }
 	}
 	return;
 }
@@ -39,7 +37,11 @@ int main(){
         for (int x=0;x<s+1;x++){
             prime[x]=true;
         }
-
+        make_prime(prime,s+1);
+        for(int i=0;i<s+1;i++){
+            if(prime[i])
+                printf("%d ",i);
+        }
         printf("\n");
 	}
 	return 0;

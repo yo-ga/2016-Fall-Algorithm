@@ -15,6 +15,21 @@ void make_prime(bool* prime,int len){
 	}
 	return;
 }
+void print_stack(stack<int> sol){
+    stack<int> temp;
+    int num;
+    while(!sol.empty()){
+        num=sol.top();
+        sol.pop();
+        printf("%d%s",num,(sol.empty()?"\n":" "));
+        temp.push(num);
+    }
+    while(!temp.empty()){
+        num=temp.top();
+        temp.pop();
+        sol.push(num);
+    }
+}
 int main(){
 	int n,s,num,sum;
 	scanf("%d",&num);

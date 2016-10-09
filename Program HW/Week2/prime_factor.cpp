@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #include <cmath>
 using namespace std;
-#define MAX_PRIME 100
+#define MAX_PRIME 40000
 static int prime[MAX_PRIME];
 void make_prime(){
 	prime[0]=2;
@@ -19,8 +19,8 @@ void make_prime(){
     }
 	return;
 }
-void print_prime(int num,int innum[MAX_PRIME]){
-	printf("%d=",num);
+void print_prime(long long num,int innum[MAX_PRIME]){
+	printf("%lld=",num);
 	int n=1,p=0,pt;
 	bool first=true;
 	for(int i=0;i<MAX_PRIME;i++){
@@ -39,23 +39,22 @@ int main(){
 	make_prime();
 	int n_prime[MAX_PRIME];
 	long long tem,n =0,i;
-	while(scanf("%lld",&n)){
-		tem=n;
-		i=0;
-		for(int k=0;k<MAX_PRIME;k++){
-            n_prime[k]=0;
+	scanf("%lld",&n);
+    tem=n;
+    i=0;
+    for(int k=0;k<MAX_PRIME;k++){
+        n_prime[k]=0;
+    }
+    while(tem!=1){
+        if(tem%prime[i]==0){
+            tem/=prime[i];
+            n_prime[i]++;
+            if(tem%prime[i]==0){
+                i--;
+            }
         }
-		while(tem!=1){
-			if(tem%prime[i]==0){
-				tem/=prime[i];
-				n_prime[i]++;
-				if(tem%prime[i]==0){
-					i--;
-				}
-			}
-			i++;
-		}
-		print_prime(n,n_prime);
-	}
+        i++;
+    }
+    print_prime(n,n_prime);
 	return 0;
 }

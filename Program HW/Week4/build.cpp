@@ -19,9 +19,6 @@ int main(){
                 }
             }
         }
-        for(int f=0;f<n;f++){
-            printf("%d ",floor[f]);
-        }
         printf("\n");
         int tem=0;
         int Max=0;

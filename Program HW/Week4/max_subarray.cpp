@@ -12,11 +12,10 @@ int main(){
             if(tem>Max)
                 Max=tem;
             else if(tem<0){
-                Max=0;
                 tem=0;
             }
         }
-        printf("%d",Max);
+        printf("%d\n",Max);
     }
     return 0;
 }
